@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Card {
+  id_card Int @id @default(autoincrement())
+  pseudo String
+  name String
+  house String
+  description String
+  actor String 
+  power String
+  rarity Float
+  image String
+  userCards    UserCards[] 
+}
+
+// UserCards is a join table between User and Card to represent the many-to-many relationship
+model UserCards {
+  id Int @id @default(autoincrement())
+  id_user Int
+  id_card Int
+  quantity Int
+
+  user User @relation(fields: [id_user], references: [id])
+  card Card @relation(fields: [id_card], references: [id_card])
+}
+
+model User {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  name  String?
+  password String
+  lastDraw  DateTime?
+  posts Post[]
+  userCards    UserCards[]
+}
+
+model Post {
+  id        Int     @id @default(autoincrement())
+  title     String
+  content   String?
+  published Boolean @default(false)
+  author    User    @relation(fields: [authorId], references: [id])
+  authorId  Int
+}

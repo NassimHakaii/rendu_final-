@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+  <header class="haut">
+      <section class="haut">
+        <nav>
+          <img
+            src="../../assets/images/harrylogo.png"
+            alt="harrylogo"
+            width="150"
+            class="logo"
+          />
+          <ul>
+            <li>
+              <a href="../../index.html">Accueil</a>
+            </li>
+            <li>
+              <a href="../../personnages.html">Personnages</a>
+            </li>
+            <li>
+              <a href="../../hogwartsLegacy.html">Hogwarts Legacy</a>
+            </li>
+            <li>
+              <a href="../../perso.html">Cartes</a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </header>
+    <main>
+      <div class="login-form">
+        <form method="POST" id="form-login">
+          <h2>Connexion</h2>
+          <div class="input-group">
+            <label for="email">Adresse Mail</label>
+            <input type="text" id="email" name="email" required />
+          </div>
+          <div class="input-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" required />
+          </div>
+          <button type="submit">Se connecter</button>
+          <button type="button" id="create-account-button">Créer un compte</button>
+          <div id="message" class="message"></div>
+        </form>
+      </div>
+      
+    </main>
+    
+  <script src="login.js"></script>
+  <script src="login.service.js"></script>
+</body>
+</html>
