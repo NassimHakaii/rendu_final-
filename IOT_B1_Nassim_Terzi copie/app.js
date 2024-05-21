@@ -279,19 +279,18 @@ function buttonFriends() {
 }
 
 
-function cardInfo() {
-  const card = document.querySelectorAll(".card_button_readmore");
 
-  if (!card) return;
-  card.forEach((card) => {
-    card.addEventListener("click", function () {
-      const cardId = card.closest(".card").getAttribute("data-id");
-      console.log(cardId, "cardId appjs");
-      // renvoie sur la page de la carte
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.addEventListener("click", function (event) {
+    if (event.target.classList.contains("card_button_readmore")) {
+      const button = event.target;
+      const cardId = button.closest(".card").getAttribute("data-id");
+      console.log("Button clicked");
+      console.log(cardId, "cardId in cardInfo");
       window.location.href = `/cardinfo.html?slug=${cardId}`;
-    });
+    }
   });
-}
+});
 
 
 function newRequestExchange() {
